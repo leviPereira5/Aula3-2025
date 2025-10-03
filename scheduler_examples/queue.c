@@ -13,6 +13,7 @@ pcb_t *new_pcb(pid_t pid, uint32_t sockfd, uint32_t time_ms) {
     new_task->sockfd = sockfd;
     new_task->time_ms = time_ms;
     new_task->ellapsed_time_ms = 0;
+    new_task->level = 0;
     return new_task;
 }
 
@@ -51,7 +52,6 @@ queue_elem_t *remove_queue_elem(queue_t* q, queue_elem_t* elem) {
     queue_elem_t* prev = NULL;
     while (it != NULL) {
         if (it == elem) {
-            // Remove elem from queue
             if (prev) {
                 prev->next = it->next;
             } else {
