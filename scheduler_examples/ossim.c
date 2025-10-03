@@ -4,6 +4,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include "sjf.h"
+#include "sjf.c"
+#include "RR.h"
+#include "RR.c"
 
 #include "debug.h"
 
@@ -222,24 +226,24 @@ void check_blocked_queue(queue_t * blocked_queue, queue_t * command_queue, uint3
 
 static const char *SCHEDULER_NAMES[] = {
     "FIFO",
-    /*
     "SJF",
     "RR",
     "MLFQ",
-    */
     NULL
 };
 
 typedef enum  {
     NULL_SCHEDULER = -1,
     SCHED_FIFO = 0,
-    SCHED_SJF,
-    SCHED_RR,
-    SCHED_MLFQ
+    SCHED_SJF = 1,
+    SCHED_RR = 2,
+    SCHED_MLFQ = 3
+
 } scheduler_en;
 
 scheduler_en get_scheduler(const char *name) {
     for (int i = 0; SCHEDULER_NAMES[i] != NULL; i++) {
+
         if (strcmp(name, SCHEDULER_NAMES[i]) == 0) {
             return (scheduler_en)i;
         }
@@ -252,6 +256,7 @@ scheduler_en get_scheduler(const char *name) {
 }
 
 int main(int argc, char *argv[]) {
+
     if (argc != 2) {
         printf("Usage: %s <scheduler>\nScheduler options: FIFO", argv[0]);
         exit(EXIT_FAILURE);
@@ -296,6 +301,13 @@ int main(int argc, char *argv[]) {
             case SCHED_FIFO:
                 fifo_scheduler(current_time_ms, &ready_queue, &CPU);
                 break;
+            case SCHED_SJF:
+                sjf_scheduler(current_time_ms, &ready_queue, &CPU);
+                break;
+            case SCHED_RR:
+                rr_scheduler(current_time_ms, &ready_queue, &CPU);
+            break;
+
             default:
                 printf("Unknown scheduler type\n");
                 break;
