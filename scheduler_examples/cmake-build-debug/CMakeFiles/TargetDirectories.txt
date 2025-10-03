@@ -1,0 +1,5 @@
+/home/aluno/tmp/tmp.awQXfWJblN/Aula3-2025/scheduler_examples/cmake-build-debug/CMakeFiles/scheduler.dir
+/home/aluno/tmp/tmp.awQXfWJblN/Aula3-2025/scheduler_examples/cmake-build-debug/CMakeFiles/app.dir
+/home/aluno/tmp/tmp.awQXfWJblN/Aula3-2025/scheduler_examples/cmake-build-debug/CMakeFiles/app-io.dir
+/home/aluno/tmp/tmp.awQXfWJblN/Aula3-2025/scheduler_examples/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/aluno/tmp/tmp.awQXfWJblN/Aula3-2025/scheduler_examples/cmake-build-debug/CMakeFiles/rebuild_cache.dir
