@@ -3,7 +3,7 @@ project(scheduling C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(scheduler ossim.c queue.c fifo.c sjf.c mlfq.c)
+add_executable(scheduler ossim.c queue.c fifo.c sjf.c mlfq.c rr2.c)
 
 add_executable(app app.c)
 

@@ -16,8 +16,15 @@
 #include "mlfq.h"
 #include "msg.h"
 #include "queue.h"
+#include "rr2.h"
+#include "sjf.h"
+
+
 #define SJF_C
 #define SJF_H
+
+#define RR_H
+#define RR_C
 
 
 
@@ -276,6 +283,10 @@ int main(int argc, char *argv[]) {
             case SCHED_SJF:
                 sjf_scheduler(current_time_ms, (queue_t *)ready_ptr, &CPU);
                 break;
+            case SCHED_RR:
+                rr_scheduler(current_time_ms, ready_ptr, &CPU);
+                break;
+
             case SCHED_MLFQ:
                 mlfq_scheduler(current_time_ms, (mlfq_ready_t *)ready_ptr, &CPU);
                 break;
